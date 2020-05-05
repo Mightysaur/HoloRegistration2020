@@ -1,30 +1,19 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using UnityEditor.Experimental.AssetImporters;
+﻿using UnityEditor.Experimental.AssetImporters;
 using UnityEngine;
-using UnityEditor;
 
 namespace Siccity.GLTFUtility {
-    [ScriptedImporter(1, "gltf")]
-    public class GLTFImporter : GLTFImporterBase {
+	[ScriptedImporter(1, "gltf")]
+	public class GLTFImporter : ScriptedImporter {
 
-        public override void OnImportAsset(AssetImportContext ctx) {
-            // Load file and get directory
-            GLTFObject gltfObject = JsonUtility.FromJson<GLTFObject>(File.ReadAllText(ctx.assetPath));
-            string directoryRoot = Directory.GetParent(ctx.assetPath).ToString() + "/";
-            string mainFile = Path.GetFileName(ctx.assetPath);
-            gltfObject.Load(directoryRoot, mainFile);
+		public ImportSettings importSettings;
 
-            // Create gameobject structure
-            GameObject[] roots = gltfObject.Create();
-
-            ApplyDefaultMaterial(roots);
-            SaveToAsset(ctx, roots);
-            AddMeshes(ctx, gltfObject);
-            AddMaterials(ctx, gltfObject);
-            AddTextures(ctx, gltfObject);
-            AddAnimations(ctx, gltfObject);
-        }
-    }
+		public override void OnImportAsset(AssetImportContext ctx) {
+			// Load asset
+			AnimationClip[] animations;
+			if (importSettings == null) importSettings = new ImportSettings();
+			GameObject root = Importer.LoadFromFile(ctx.assetPath, importSettings, out animations, Format.GLTF);
+			// Save asset
+			GLTFAssetUtility.SaveToAsset(root, animations, ctx);
+		}
+	}
 }

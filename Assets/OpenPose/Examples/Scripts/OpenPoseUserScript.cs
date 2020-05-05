@@ -70,7 +70,9 @@ namespace OpenPose.Example {
         private float avgFrameRate = 0f;
         private int frameCounter = 0;
 
+        
         private void Start() {
+            
             // Register callbacks
             OPWrapper.OPRegisterCallbacks();
             // Enable OpenPose log to unity (default true)
@@ -168,8 +170,10 @@ namespace OpenPose.Example {
                 // Rescale output UI
                 Vector2 outputSize = outputTransform.sizeDelta;
                 Vector2 screenSize = Camera.main.pixelRect.size;
+                
                 float scale = Mathf.Min(screenSize.x / outputSize.x, screenSize.y / outputSize.y);
                 outputTransform.localScale = new Vector3(scale, scale, scale);
+                Debug.Log(scale);
 
                 // Update number of people in UI
                 if (datum.poseKeypoints == null || datum.poseKeypoints.Empty()) numberPeople = 0;
@@ -184,23 +188,18 @@ namespace OpenPose.Example {
                 foreach (var human in humanContainer.GetComponentsInChildren<HumanController2D>()) {
                     // When i >= no. of human, the human will be hidden
                     //human.DrawHuman(ref datum, i++, renderThreshold);
-                    Vector3 pos = new Vector3(datum.poseKeypoints.Get(0, 2, 0), datum.poseKeypoints.Get(0, 2, 1), 0f);
-                    //Debug.Log(datum.poseKeypoints.Get(0, 8, 0).ToString());
-                    List<float> points = new List<float>(){
-                        datum.poseKeypoints.Get(0, 2, 0),
-                        datum.poseKeypoints.Get(0, 2, 1),
-                        datum.poseKeypoints.Get(0, 5, 0),
-                        datum.poseKeypoints.Get(0, 5, 1),
-                        datum.poseKeypoints.Get(0, 8, 0),
-                        datum.poseKeypoints.Get(0, 8, 1),
-                        datum.poseKeypoints.Get(0, 1, 0),
-                        datum.poseKeypoints.Get(0, 1, 1)
-                    };
                     
-                    GameObject cube1 = GameObject.Find("lungs");
-                    MoveCube scriptmove = (MoveCube)cube1.GetComponent(typeof(MoveCube));
-                    scriptmove.UpdatePosSize(points);
-                    
+                    //Debug.Log((datum.poseKeypoints.Get(0, 8, 0)).ToString());
+                    GameObject cube1 = GameObject.Find("Pivot");
+                    ModelManager scriptmove = (ModelManager)cube1.GetComponent(typeof(ModelManager));
+                    scriptmove.ParseDatum(datum, scale);
+                    /*GameObject modelLoader = GameObject.Find("ModelLoader");
+                    ModelLoader modelscript = (ModelLoader)modelLoader.GetComponent(typeof(ModelLoader));
+                    GameObject context = modelscript.UpdateModelOverlay();
+                    MoveCube test = (MoveCube)context.GetComponent(typeof(MoveCube));
+                    test.UpdatePosSize(datum);
+                    */
+
                     //scriptmove.Updatesize(datum.poseKeypoints);
                     //Debug.Log(pos.ToString());
                 }
