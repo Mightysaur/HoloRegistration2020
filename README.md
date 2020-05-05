@@ -32,5 +32,3 @@ Supervisors: Prof. Dean Mohamedally, Prof. Neil Sebire, Sheena Visram
 
 Built at [University College London](https://www.ucl.ac.uk/) in cooperation with [Intel™](https://www.intel.co.uk) and [GOSH DRIVE](https://www.goshdrive.com/).
 
-
-Logo is derived from a work by <a href="https://www.freepik.com/">Freepik</a> at <a href="https://www.flaticon.com/">www.flaticon.com</a>.
