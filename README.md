@@ -1,5 +1,5 @@
 <p align="center">
-  HOLOREGISTRATION 2020
+  #HOLOREGISTRATION 2020
 </p>
 
 HoloRegisration 2020 is a Windows Unity based appliction that allows augmented reality overlays of human organs over the body. It supports models of the gltf(and glb) format and is intended to work with the HoloPipelines segmentation output. As of right now, supported models are lungs, kidneys and abdominal organs. 
