@@ -21,7 +21,7 @@ HoloRegistration2020.exe -model "C:\User\Documents\lungs.glb" -organ "lungs"
 ```
 
 ![5abce4c31e6f9582a0469a47960e1fee](https://user-images.githubusercontent.com/24493864/81484280-4023c300-923c-11ea-949d-589f64c09c9d.png)
-<img width="340" alt="lung scan" src="https://user-images.githubusercontent.com/24493864/81484280-4023c300-923c-11ea-949d-589f64c09c9d.png">
+<img width="100" alt="lung scan" src="https://user-images.githubusercontent.com/24493864/81484280-4023c300-923c-11ea-949d-589f64c09c9d.png">
 
 
 # Source Code
