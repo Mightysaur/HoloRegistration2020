@@ -20,7 +20,7 @@ e.g.
 HoloRegistration2020.exe -model "C:\User\Documents\lungs.glb" -organ "lungs"
 ```
 
-### UI
+## UI
 <img width="100" alt="lung scan" src="https://user-images.githubusercontent.com/24493864/81484476-96453600-923d-11ea-9ae2-12f735336f86.png">
 
 Toggle Video Stream - Toggle the camera feed to be displayed on screen.
