@@ -34,7 +34,7 @@ public class ModelLoader : MonoBehaviour
     public ImporterContext context;
     public GameObject BodyPartsMissing;
     public Shader gltfTansparencyMaterial;
-    public GameObject test;
+    public GameObject popup;
 
 
 
@@ -48,7 +48,9 @@ public class ModelLoader : MonoBehaviour
 
     public void SetRotationZ(string s) { int res; if (int.TryParse(s, out res)) { rotationZ = res % 360; }; rotationDisplayZ.GetComponent<InputField>().text = rotationZ.ToString(); }
 
+    public void OpenPopup() { popup.SetActive(true); }
 
+    public void ClosePopup() { popup.SetActive(false); }
     public void SetModelEnabled(bool enabled) { this.enableModel = enabled; UpdateModelRenderer(); }
 
 

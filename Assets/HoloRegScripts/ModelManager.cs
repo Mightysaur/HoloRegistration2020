@@ -165,92 +165,7 @@ public class ModelManager : MonoBehaviour
         this.transform.parent.GetComponent<ModelLoader>().BodyPartsMissing.GetComponent<Text>().text = "All body parts present";
     }
 
-    /*
-    public void UpdatePosSize(OPDatum datumX, float scale)
-    {
-        if(modelAttached == true)
-        {
-            datum = datumX;
-            float[] organBodyParts;
-
-            List<float> coordsX = ExtractBodyCoords(0);
-            if (coordsX.Contains(0F))
-            {
-
-                manager.organBodyParts.TryGetValue(organString, out organBodyParts);
-                float[] zeroIndexes = coordsX.Select(b => b == 0F ? 1F : 0F).ToArray();
-                //Debug.Log(coordsX.);
-                Debug.Log(coordsX[0].ToString() + " " + coordsX[1].ToString() + " " + coordsX[2].ToString());
-                Debug.Log(zeroIndexes[0].ToString() + zeroIndexes[1].ToString() + zeroIndexes[2].ToString());
-                zeroIndexes = zeroIndexes.Zip(organBodyParts, (zeroInd, part) => zeroInd == 1F ? part : -1F).Where(c => c >= 0).ToArray();
-                string errorBodyPart = "Missing body parts: ";
-                foreach (float part in zeroIndexes)
-                {
-                    errorBodyPart += bodyPartList[(int)part] + " ";
-                }
-                Debug.Log(errorBodyPart);
-
-
-                this.transform.parent.GetComponent<ModelLoader>().BodyPartsMissing.GetComponent<Text>().text = errorBodyPart;
-                this.transform.GetChild(0).gameObject.SetActive(false);
-            }
-            else
-            {
-                //this.transform.parent.GetComponent<ModelLoader>().BodyPartsMissing.GetComponent<Text>().text = "All body parts present";
-                this.transform.GetChild(0).gameObject.SetActive(true);
-                List<float> coordsY = ExtractBodyCoords(1);
-                List<float> weightsX = ExtractWeights(0);
-                List<float> weightsY = ExtractWeights(1);
-                List<float> boundingBox = ExtractBox();
-
-                offsetX = this.transform.parent.GetComponent<ModelLoader>().offsetX;
-                offsetY = this.transform.parent.GetComponent<ModelLoader>().offsetY;
-                rotationX = this.transform.parent.GetComponent<ModelLoader>().rotationX;
-                rotationY = this.transform.parent.GetComponent<ModelLoader>().rotationY;
-                rotationZ = this.transform.parent.GetComponent<ModelLoader>().rotationZ;
-
-                Vector3 avgPosWeighted = new Vector3(coordsX.Zip(weightsX, (coord, weight) => coord * weight).Where(c => c != 0).Average() + offsetX, coordsY.Zip(weightsY, (coord, weight) => coord * weight).Where(c => c != 0).Average() + offsetY, -100F);
-                gameObject.transform.localPosition = (avgPosWeighted + lastCoord[0] + lastCoord[1])/3;
-                lastCoord[1] = lastCoord[0];
-                lastCoord[0] = avgPosWeighted;
-                //Debug.Log(avgPosWeighted.ToString());
-                gameObject.transform.eulerAngles = new Vector3(rotationX, rotationY, rotationZ);
-
-                Vector3 witdh1 = new Vector3(boundingBox[0], 0F, 500F);
-                Vector3 width2 = new Vector3(boundingBox[1], 0F, 500F);
-                Vector3 width = Vector3.Scale((m_MainCamera.ScreenToWorldPoint(witdh1) - m_MainCamera.ScreenToWorldPoint(width2)), (new Vector3(boundingBox[2], boundingBox[2], boundingBox[2])));
-
-                Vector3 height1 = new Vector3(0, boundingBox[3], 500F);
-                Vector3 height2 = new Vector3(0F, boundingBox[4], 500F);
-                Vector3 height = Vector3.Scale((m_MainCamera.ScreenToWorldPoint(height1) - m_MainCamera.ScreenToWorldPoint(height2)), (new Vector3(boundingBox[5], boundingBox[5], boundingBox[5])));
-
-
-                Debug.Log("canvas coords " + boundingBox[0] + " " + boundingBox[1]);
-                Debug.Log("screentwp " + m_MainCamera.ScreenToWorldPoint(witdh1) + " " + m_MainCamera.ScreenToWorldPoint(width2));
-                Debug.Log("width " + ((m_MainCamera.ScreenToWorldPoint(witdh1) - m_MainCamera.ScreenToWorldPoint(width2))) + " widthScal " + width);
-                Debug.Log("scale " + scale);
-
-
-
-                Bounds organModelBounds = GetMeshBounds();
-                
-                float widthX = (width.x / 2) * gameObject.transform.localScale.x / organModelBounds.extents.x;
-                float heightY = (height.y / 2) * gameObject.transform.localScale.y / organModelBounds.extents.y;
-                float avgScale = (widthX + heightY) / 2;
-                //float avgScale = widthX;
-
-
-
-                gameObject.transform.localScale = new Vector3(avgScale*scale, avgScale*scale, avgScale*scale);
-                Bounds organModelBoundsNew = GetMeshBounds();
-                Debug.Log(organModelBounds + " " + organModelBoundsNew + " " + widthX + "  " + heightY);
-           
-                this.transform.parent.GetComponent<ModelLoader>().BodyPartsMissing.GetComponent<Text>().text = "All body parts present";
-            }
-        }
-
-    }
-    */
+   
     private Bounds getBounds()
     {
         Bounds totalBounds = organ.transform.GetChild(0).GetComponentInChildren<Renderer>().bounds;
@@ -420,13 +335,8 @@ public class ModelManager : MonoBehaviour
 
     public void AttachModel()
     {
-        //gameObject.transform.GetChild(0).transform.localScale = new Vector3(1F, 1F, 1F);
-        //gameObject.transform.GetChild(0).gameObject.transform.position = new Vector3();
+
         Vector3 meshCenter = GetMeshCenter();
-        //Debug.Log(meshCenter);
-        //gameObject.transform.GetChild(0).gameObject.transform.position = gameObject.transform.position;
-        //gameObject.transform.GetChild(0).gameObject.transform.position = -meshCenter;
-        //gameObject.transform.GetChild(0).transform.localRotation = new Quaternion();
         modelAttached = true;
     }
 
