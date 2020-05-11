@@ -46,15 +46,15 @@ To start development, the getModels.bat and getPlugins.bat need to be run first 
 
 # Adding extra organ configurations
 Organ configurations can be added by adding to the config.json found in the config folder.
-
+```bash
 {"organName":"lung",\
     "bodyPart":[2.0,5.0,8.0],\
     "weightsPosX":[0.0,0.0,1.0],\
     "weightsPosY":[1.0,1.0,0.75],\
     "height":[8.0,1.0,0.699999988079071],\
     "width":[5.0,2.0,0.8500000238418579]\
-}\
-
+}
+```
 Organ configurations should follow the above format. 
 
 organName - Name given for the configuration
