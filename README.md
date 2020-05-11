@@ -69,9 +69,13 @@ height - Float list of 2 bodyParts and a weight multiplier.
 
 width - Float list of 2 bodyParts and a weight multiplier.
 
+### Configuration Calculation Explanation
 
+The application uses the above parameters to calculate the position and size a model should be with respect to general human key points
 
+Position - For this each body keypoint is multiplied agaisnt their respective weights found in weightsPos. The average between the non-zero elements is found and set as the position.
 
+Size - For this, height and width is used. The first two elements represent two body points. The weight multiplier is used to indicate the propotion of the size that the model will take between those two points.
 
 # Acknowledgements
 Main authors: Immanuel Baskaran, Abhinath Kumar, Carlo Winkelhake, Daren Alfred
