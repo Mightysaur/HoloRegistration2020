@@ -53,7 +53,19 @@ Organ configurations can be added by adding to the config.json found in the conf
     "weightsPosY":[1.0,1.0,0.75],\
     "height":[8.0,1.0,0.699999988079071],\
     "width":[5.0,2.0,0.8500000238418579]\
-}
+}\
+
+Organ configurations should follow the above format. 
+
+organName - Name given for the configuration
+bodyPart - Float list of the body parts used in the position calulation. For the mapping between numbers and body parts, OpenPose API should be queried for a list.
+weightsPosX - Float list of the weights for the X coordinate of the organ. List size must match the number of elements in bodyPart.
+weightsPosY - Float list of the weights for the Y coordinate of the organ. List size must match the number of elements in bodyPart.
+height - Float list of 2 bodyParts and a weight multiplier.
+width - Float list of 2 bodyParts and a weight multiplier.
+
+
+
 
 # Acknowledgements
 Main authors: Immanuel Baskaran, Abhinath Kumar, Carlo Winkelhake, Daren Alfred
