@@ -44,6 +44,16 @@ This repository includes the source code for this application along with the [Op
 
 To start development, the getModels.bat and getPlugins.bat need to be run first to download the body data and pose estimation models. Then the project can be loaded into Unity. This was developed using Unity version 2018.4.0f1. Newer versions are likely to work but not garunteed.
 
+# Adding extra organ configurations
+Organ configurations can be added by adding to the config.json found in the config folder.
+{"organName":"lung",
+    "bodyPart":[2.0,5.0,8.0],
+    "weightsPosX":[0.0,0.0,1.0],
+    "weightsPosY":[1.0,1.0,0.75],
+    "height":[8.0,1.0,0.699999988079071],
+    "width":[5.0,2.0,0.8500000238418579]
+}
+
 # Acknowledgements
 Main authors: Immanuel Baskaran, Abhinath Kumar, Carlo Winkelhake, Daren Alfred
 
